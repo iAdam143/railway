@@ -4,7 +4,7 @@ import torch.nn.functional as F
 import torch
 import numpy as np
 import cv2
-
+import pickle
 
 app = Flask(__name__, template_folder='templates', static_folder='Static')
 
@@ -13,8 +13,8 @@ app = Flask(__name__, template_folder='templates', static_folder='Static')
 def index():
     return render_template('index.html')
 
-
-model=torch.load("modelcpu.pkl")
+with open("modelcpu.pkl", "rb") as file:
+    model = pickle.load(file)
 model.eval()
 
 def pre_process_image(img):
