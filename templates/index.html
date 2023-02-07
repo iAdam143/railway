@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name = "viewport" content="width=device-width, initial-scale=1.0 ">
+    <title>Wheat Disease Diagnosis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+</head>
+
+<body>
+    <section class="header">
+        <nav>
+            <a href="http://127.0.0.1:5000/"><img src="{{url_for('static', filename='images/log.png')}}" ></a>
+            <div class="nav-links">
+                <ul>
+                   <!-- <li><a href="">HOME</a></li>-->
+                   <!--<li><a href="">About</a></li>-->
+                </ul>
+
+            </div>
+        </nav>
+<div class="text-box">
+    <h1>Welcome</h1>
+    <p>Upload the picture sample please</p>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <input type="submit" value="Predict">
+        {% if result %}
+          <p2>Result: {{ result }}<p2>
+        {% endif %}
+    </form>
+    </section>
+</div>
+    </section>
+
+ 
+ <section class="diseases">
+     <h1>Diseases that the model can identify</h1>
+
+     <div class="row">
+         <div class="col-lg-4">
+             <h3>Loose Smut</h3>
+             <p>The seeds are infected during flowering and the infected seeds are the primary source of inoculum in the next crop. The fungus survives inside the seed and when the seed germinates, the mycelium of the fungus grows upwards inside the plant into the growing tip. The first sign of infection is the appearance of a smutted ear. Instead of normal tissue, the ear contains a mass of olive-brown smut spores. </p>
+             <img src="{{url_for('static', filename='images/smut.jpg')}}" align="middle" style="height:400px ;width:400px" />
+    
+         </div>
+     <div class="col-lg-4">
+            <h3>Leaf Rust</h3>
+            <p>Leaf rust, also known as brown rust, is caused by the fungus Puccinia triticina. This rust disease occurs wherever wheat, barley and other cereal crops are grown. Leaf rust attacks foliage only. Identifying symptoms are dusty, reddish-orange to reddish-brown fruiting bodies that appear on the leaf surface. These lesions produce numerous spores, which can cover nearly the entire upper leaf surface.</p>
+            <img src="{{url_for('static', filename='images/PLPTH-CER-12_Fig_1_Page_1.png')}}" align="middle" style="height:400px ;width:400px" />
+        </div>
+        <div class="col-lg-4">
+            <h3>Crown Root Rot</h3>
+            <p>Root and crown rot of winter wheat is caused by the infection of roots and crowns by Bipolaris sorokiniana and several species of Fusarium. The mycelium of B. sorokiniana is a deep olive-brown. Conidiophores are single or clustered, simple, erect and with septations.Symptoms of root and crown rot of winter wheat may first appear on the roots and sub-crown internodes in late fall as small brown to black lesions on the primary and secondary roots. </p>
+            <img src="{{url_for('static', filename='images/Effective.jpg')}}" align="middle" style="height:400px ;width:400px" />
+        </div>     
+     </div>
+     </div>
+ </section>
+</body>
+</html>
